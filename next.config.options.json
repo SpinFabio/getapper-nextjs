@@ -1,4 +1,13 @@
 {
-  "rewrites": [],
+  "rewrites": [
+    {
+      "source": "/admin/:path*",
+      "destination": "/admin"
+    },
+    {
+      "source": "/admin/:path*",
+      "destination": "/admin"
+    }
+  ],
   "env": []
 }
