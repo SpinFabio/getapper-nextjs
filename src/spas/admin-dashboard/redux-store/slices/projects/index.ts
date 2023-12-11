@@ -1,6 +1,7 @@
-import { createSlice } from "@reduxjs/toolkit";
 import * as selectors from "./projects.selectors";
-import { AddNewProjectAction, ProjectsState } from "./projects.interfaces";
+import { ProjectsState } from "./projects.interfaces";
+import { createSlice } from "@reduxjs/toolkit";
+import * as extraActions from "../../extra-actions";
 import * as sagas from "./projects.sagas";
 
 const initialState: ProjectsState = {
@@ -10,10 +11,14 @@ const initialState: ProjectsState = {
 export const projectsStore = createSlice({
   name: "projects",
   initialState,
-  reducers: {
-    addNewProject: (state, action: AddNewProjectAction) => {
-      state.list = [...(state.list ?? []), action.payload];
-    },
+  reducers: {},
+  extraReducers: (builder) => {
+    builder.addCase(extraActions.getProjects.success, (state, action) => {
+      state.list = action.payload.data.projects;
+    });
+    builder.addCase(extraActions.postProjects.success, (state, action) => {
+      state.list = [...state.list, action.payload.data.project];
+    });
   },
 });
 

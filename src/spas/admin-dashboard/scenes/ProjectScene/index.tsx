@@ -12,11 +12,10 @@ export const ProjectScene = memo(({}: ProjectSceneProps) => {
       <Link to="/nuovo-progetto">
         <Button variant="outlined">Crea nuovo progetto</Button>
       </Link>
+      <Typography variant={"h2"}>Progetti</Typography>
       {projectsList.map((project) => (
         <Paper key={project.name}>{project.name}</Paper>
       ))}
-
-      <Typography>Progetti</Typography>
     </Box>
   );
 });

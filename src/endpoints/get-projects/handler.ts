@@ -5,6 +5,7 @@ import {
 } from "@/lib/response-handler";
 import { NextApiResponse } from "next";
 import { GetProjectsApi } from "./interfaces";
+import { Project } from "@/models/server/Project";
 /*
   qui c'è il controller e la buisness logic
  */
@@ -26,7 +27,11 @@ export default async function handler(
       );
     }
 
-    return ResponseHandler.json<GetProjectsApi.SuccessResponse>(res, {});
+    const projects = await Project.getList({}, { limit: 1000 });
+
+    return ResponseHandler.json<GetProjectsApi.SuccessResponse>(res, {
+      projects: projects.map((p) => p.toClientVersion()),
+    });
   } catch (e) {
     console.error(e);
     return ResponseHandler.json<ErrorResponse>(

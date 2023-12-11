@@ -32,7 +32,7 @@ export const useNewProjectForm = () => {
     () =>
       handleSubmit((data) => {
         //dispatch(actions.addNewProject(data))
-        dispatch(actions.postProjects.request(data));
+        dispatch(actions.postProjects.request(data)); //
         reset({ name: "" });
       }),
     [handleSubmit],
