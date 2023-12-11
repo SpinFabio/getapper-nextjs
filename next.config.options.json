@@ -9,5 +9,5 @@
       "destination": "/admin"
     }
   ],
-  "env": []
+  "env": ["MONGODB_NAME", "MONGODB_URI"]
 }

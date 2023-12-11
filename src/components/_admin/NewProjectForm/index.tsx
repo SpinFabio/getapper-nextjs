@@ -2,6 +2,7 @@ import React, { memo } from "react";
 import { FormProvider } from "react-hook-form";
 import { useNewProjectForm } from "./index.hooks";
 import { Button, Stack } from "@mui/material";
+import { FormTextField } from "@/components/_form/FormTextField";
 
 type NewProjectFormProps = {};
 
@@ -11,10 +12,9 @@ export const NewProjectForm = memo(({}: NewProjectFormProps) => {
   return (
     <FormProvider {...formData}>
       <form onSubmit={triggerSubmit}>
-        <Stack spacing={3}>
-          <Button variant="contained" type="submit" disabled={submitDisabled}>
-            Salva
-          </Button>
+        <Stack spacing={1} sx={{ maxWidth: "480px" }}>
+          <FormTextField name={"name"} label={"Nome del Progetto"} />
+          <Button type={"submit"}>Salva</Button>
         </Stack>
       </form>
     </FormProvider>
