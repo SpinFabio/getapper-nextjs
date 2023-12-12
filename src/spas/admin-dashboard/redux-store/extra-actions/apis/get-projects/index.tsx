@@ -8,8 +8,11 @@ import {
 } from "../api-builder";
 import { IProjectFe } from "@/models/client/ProjectFe";
 
-export interface GetProjectsParams {}
+export interface GetProjectsParams {
+  // parametri che riceve il BE
+}
 export interface GetProjectsResponseData {
+  // parametri che riceve il FE (in questo caso un array di progetti FE)
   projects: IProjectFe[];
 }
 export default apiActionBuilder<

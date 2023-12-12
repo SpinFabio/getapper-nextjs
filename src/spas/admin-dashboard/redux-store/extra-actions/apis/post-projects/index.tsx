@@ -26,7 +26,8 @@ export default apiActionBuilder<
         path: "/projects",
         method: HttpMethod.POST,
         body: {
-          // abbiamo aggiunto questo campo perchè è quello che il nostros erver si aspetta
+          // body è un parametro che cosntiene un oggetto con ciò che il server vuole
+          // deve essere simile al payload dell'interfaccia post-project dell' endpoint
           name: params.name,
         },
       },
