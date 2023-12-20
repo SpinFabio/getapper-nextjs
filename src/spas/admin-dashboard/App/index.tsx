@@ -10,8 +10,7 @@ import {
   Drawer,
   List,
   MenuItem,
-  ListItemIcon,
-  ListItemText, // Aggiungi l'importazione mancante
+  ListItemText,
 } from "@mui/material";
 import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
 import { DashboardScene } from "@/spas/admin-dashboard/scenes/DashboardScene";
@@ -61,7 +60,6 @@ const App: React.FC = () => {
             </Toolbar>
           </AppBar>
 
-          {/* Aggiungi il Drawer per la navigazione mobile */}
           <Drawer
             variant="permanent"
             sx={{
@@ -73,7 +71,7 @@ const App: React.FC = () => {
             }}
           >
             <List>
-              {sections.map((section, index) => {
+              {sections.map((section) => {
                 return (
                   <Link to={section.to} key={section.title}>
                     <MenuItem>

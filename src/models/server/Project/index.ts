@@ -1,26 +1,19 @@
 import { Filter, ObjectId, WithId } from "mongodb";
 import mongoDao from "@/lib/mongodb/mongo-dao";
 import { IProjectFe } from "@/models/client/ProjectFe";
-/*
-  abbiamo una doppia versione dei dati che sono presenti sul server di mongo Db
-  IProject sono i dati che effettivamente saranno  messi dentro al db
 
-  Progect sono invece i dati con cui lavoreremo nel client,
-  i quali hanno già dei metodi preimpostati
-
- */
 export type IProject = {
   _id?: ObjectId;
-  name: string;
   created: Date;
   v: number;
+  name: string;
 };
 
 export class Project implements WithId<IProject> {
   _id: ObjectId;
-  name: string;
   created: Date;
   v: number;
+  name: string;
 
   static get collectionName() {
     return "projects";
@@ -35,8 +28,8 @@ export class Project implements WithId<IProject> {
       Project.collectionName,
       {
         created: new Date(),
-        name,
         v: 1,
+        name,
       },
     );
     return iProject ? new Project(iProject) : null;
@@ -125,9 +118,9 @@ export class Project implements WithId<IProject> {
       throw new Error("Interface object doesn't have an _id");
     }
     this._id = iProject._id;
-    this.name = iProject.name;
     this.created = iProject.created;
     this.v = iProject.v;
+    this.name = iProject.name;
   }
 
   async refresh() {

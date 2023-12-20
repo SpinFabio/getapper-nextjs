@@ -9,7 +9,7 @@ const schema = yup.object({
   email: yup
     .string()
     .email("the email isn't valid")
-    .required("Please sepcify an email"),
+    .required("Please specify an email"),
 });
 
 type ContactFormData = {
@@ -22,7 +22,8 @@ export const useContactForm = () => {
   const formData = useForm<ContactFormData>({
     resolver: yupResolver(schema),
     defaultValues: {
-      // name: "",
+      name: " ",
+      email: " ",
     },
   });
 
@@ -30,13 +31,15 @@ export const useContactForm = () => {
     handleSubmit,
     formState: { isValid, isSubmitted },
   } = formData;
+
   const submitDisabled = isSubmitted && !isValid;
 
   const triggerSubmit = useMemo(
     //è la funzione che si occupa della gestione dell' invio dei dati del form
     () =>
       handleSubmit((data) => {
-        alert("Data submitted sucesfuly");
+        alert("Data submitted successfully");
+        console.log(data.name + " " + data.age + " " + data.email);
 
         // data.name;
       }),

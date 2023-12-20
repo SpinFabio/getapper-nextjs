@@ -1,5 +1,5 @@
 import * as selectors from "./projects.selectors";
-import { ProjectsState } from "./projects.interfaces";
+import { AddNewProjectAction, ProjectsState } from "./projects.interfaces";
 import { createSlice } from "@reduxjs/toolkit";
 import * as extraActions from "../../extra-actions";
 import * as sagas from "./projects.sagas";

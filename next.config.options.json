@@ -3,10 +3,6 @@
     {
       "source": "/admin/:path*",
       "destination": "/admin"
-    },
-    {
-      "source": "/admin/:path*",
-      "destination": "/admin"
     }
   ],
   "env": ["MONGODB_NAME", "MONGODB_URI"]

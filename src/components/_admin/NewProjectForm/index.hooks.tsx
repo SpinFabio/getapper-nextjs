@@ -6,7 +6,7 @@ import { useDispatch } from "react-redux";
 import { actions } from "@/spas/admin-dashboard/redux-store";
 
 const schema = yup.object({
-  name: yup.string().required("Specificare un nome"),
+  name: yup.string().min(3).max(200).required("Specificare un nome"),
 });
 
 type NewProjectFormData = {
@@ -18,7 +18,7 @@ export const useNewProjectForm = () => {
   const formData = useForm<NewProjectFormData>({
     resolver: yupResolver(schema),
     defaultValues: {
-      //name: "",
+      name: " ",
     },
   });
   const {
@@ -31,11 +31,11 @@ export const useNewProjectForm = () => {
   const triggerSubmit = useMemo(
     () =>
       handleSubmit((data) => {
-        //dispatch(actions.addNewProject(data))
-        dispatch(actions.postProjects.request(data)); //
+        // dispatch(actions.addNewProject(data))
+        dispatch(actions.postProjects.request(data));
         reset({ name: "" });
       }),
-    [handleSubmit],
+    [handleSubmit, dispatch, reset],
   );
 
   return {
